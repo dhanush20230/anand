@@ -1,0 +1,159 @@
+Mylogin.js
+
+
+import React, { useState } from 'react';
+function Mylogin() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const isEmailValid = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  };
+
+  const isPasswordValid = (password) => {
+    return password.length >= 8;
+  };
+
+  const handleLogin = () => {
+    setError('');
+    setSuccessMessage('');
+
+    if (email === '') {
+      setError('Enter your email before login!');
+      return;
+    }
+
+    if (!isEmailValid(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    if (password === '') {
+      setError('Enter your password before login!');
+      return;
+    }
+
+    if (!isPasswordValid(password)) {
+      setError('Password should be at least 8 characters.');
+      return;
+    }
+
+    setLoggedIn(true);
+    setSuccessMessage('Login Successful!');
+  };
+
+  const renderLoginForm = () => {
+    return (
+      <div className='log'>
+        <>
+          <h2>Login</h2>
+
+          {error && <p className="error">{error}</p>}
+          {successMessage && <p className="success">{successMessage}</p>}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label htmlFor='email'>Email:&nbsp;&nbsp;</label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor='password'>Password:&nbsp;&nbsp;</label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <button onClick={handleLogin}>Login</button>
+        </>
+      </div>
+    );
+  };
+
+  const renderWelcomeMessage = () => {
+    return (
+      <>
+        <p><h1>Login Successful!</h1></p>
+      </>
+    );
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        {loggedIn ? renderWelcomeMessage() : renderLoginForm()}
+      </header>
+    </div>
+  );
+}
+
+export default Mylogin;
+
+
+app.js
+
+import Mylogin from './Mylogin.js';
+import './App.css';
+function App() {
+  return(
+      <Mylogin/>
+  );
+}
+export default App;
+
+app.css
+
+
+.log {
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: #f44336;
+}
+
+.success {
+  color: #4caf50;
+}
+
