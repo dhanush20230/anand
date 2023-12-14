@@ -46,7 +46,7 @@
       var branch = document.getElementById("branch").value;
       var gender = document.querySelector('input[name="gender"]:checked');
 
-      
+     
       var isValidEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
       if (!isValidEmail) {
         alert("Invalid email format");
@@ -65,7 +65,6 @@
         return false;
       }
 
-      
       sessionStorage.setItem("name", name);
       sessionStorage.setItem("email", email);
       sessionStorage.setItem("phone", phone);
