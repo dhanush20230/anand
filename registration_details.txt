@@ -17,9 +17,7 @@
         
         <input type="submit" value="Thanks">
     </form>
-
-
-    <script>
+<script>
         document.getElementById("fullName").textContent = sessionStorage.name;
         document.getElementById("address").textContent = sessionStorage.address;
         document.getElementById("email").textContent = sessionStorage.email;
