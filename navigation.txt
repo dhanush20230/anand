@@ -1,0 +1,67 @@
+App.js
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
+import Contact from './Contact';
+import './App.css';
+
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <ul className="App-header">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About Us</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact Us</Link>
+            </li>
+          </ul>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
+      </Router>
+    );
+  }
+}
+
+export default App;
+
+Home.js
+
+import React from 'react';
+function Home (){
+return <h1>Welcome to the world of Geeks!</h1>
+}
+export default Home;
+
+import React from 'react';
+function Home (){
+return <h1>Welcome to the world of Geeks!</h1>
+}
+export default Home;
+
+About.js :
+
+import React from 'react';
+function About () {
+return <p>About Us</p>
+}
+export default About;
+
+Contact.js
+
+import React from 'react';
+function Contact (){
+return <p>Contact Us</p>
+}
+export default Contact;
