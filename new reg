@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="registration_validation.js"></script>
+</head>
+<body>
+  <h2>Student Registration</h2>
+  <form method="post" onsubmit="return validateForm()" action="registration_details.html">
+    <label><b>Name : </b></label><br>
+    <input type="text" name="fname" id="name" placeholder="Enter your Full Name" ><br><br>
+
+    <label><b>Email : </b></label><br>
+    <input type="text" name="email" id="mail" placeholder="Enter your email" ><br><br>
+
+    <label><b>Mobile Number : </b></label><br>
+    <input type="text" name="num" id="num" placeholder="Enter your phone number " ><br><br>
+
+    <label><b>Address : </b></label><br>
+    <textarea id="add" name="add" placeholder="Enter your address" ></textarea><br><br>
+   
+    <label><b>Branch :</b></label><br>
+    <select id="branch" name="branch" >
+      <option value="" disabled selected>Select Your Branch</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Auto Mobile">Auto Mobile</option>
+      <option value="Mechanical">Mechanical Engineering</option>
+      <option value="Electrical">Electrical Engineering</option>
+      <option value="Electrical Communication">Electrical and Communication</option>
+    </select><br><br>
+   
+    <label><b>Gender :</b></label><br>
+    <input type="radio" name="gender" id="genderMale" value="male">Male
+    <input type="radio" name="gender" id="genderFemale" value="female">Female<br><br>
+
+    <hr color="orange"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function validateForm() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("mail").value;
+      var phone = document.getElementById("num").value;
+      var address = document.getElementById("add").value;
+      var branch = document.getElementById("branch").value;
+      var gender = document.querySelector('input[name="gender"]:checked');
+
+     
+      var isValidEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
+      if (!isValidEmail) {
+        alert("Invalid email format");
+        return false;
+      }
+
+      
+      var isValidPhone = /^\d{10}$/.test(phone);
+      if (!isValidPhone) {
+        alert("Phone number must be 10 digits");
+        return false;
+      }
+
+      if (name === "" || address === "" || branch === "" || !gender) {
+        alert("All fields must be filled out");
+        return false;
+      }
+
+      
+      sessionStorage.setItem("name", name);
+      sessionStorage.setItem("email", email);
+      sessionStorage.setItem("phone", phone);
+      sessionStorage.setItem("address", address);
+      sessionStorage.setItem("branch", branch);
+      sessionStorage.setItem("gender", gender.value);
+
+      return true;
+    }
+  </script>
+</body>
+</html>
