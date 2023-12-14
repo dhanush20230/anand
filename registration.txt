@@ -65,6 +65,7 @@
         return false;
       }
 
+      
       sessionStorage.setItem("name", name);
       sessionStorage.setItem("email", email);
       sessionStorage.setItem("phone", phone);
