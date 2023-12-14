@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head>
+  
+  <title>Registration Details</title>
+  
+</head>
+<body>
+  <h2>Registration Details</h2>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const name = sessionStorage.getItem('name');
+      const email = sessionStorage.getItem('email');
+      const phone = sessionStorage.getItem('phone');
+      const address = sessionStorage.getItem('address');
+      const branch = sessionStorage.getItem('branch');
+      const gender = sessionStorage.getItem('gender');
+
+      document.write(`<p><b>Name:</b> ${name}</p>`);
+      document.write(`<p><b>Email:</b> ${email}</p>`);
+      document.write(`<p><b>Phone:</b> ${phone}</p>`);
+      document.write(`<p><b>Address:</b> ${address}</p>`);
+      document.write(`<p><b>Branch:</b> ${branch}</p>`);
+      document.write(`<p><b>Gender:</b> ${gender}</p>`);
+    });
+  </script>
+</body>
+</html>
